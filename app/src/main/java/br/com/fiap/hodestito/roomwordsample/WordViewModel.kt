@@ -11,7 +11,7 @@ import br.com.fiap.hodestito.roomwordsample.repository.WordRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class WordViewModel(application: Application, val wordRepository: WordRepository) : AndroidViewModel(application) {
+class WordViewModel(application: Application, private val wordRepository: WordRepository) : AndroidViewModel(application) {
 
         val allWords: LiveData<List<Word>> = wordRepository.allWords
 
