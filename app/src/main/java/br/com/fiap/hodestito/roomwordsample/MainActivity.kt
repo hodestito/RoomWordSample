@@ -15,10 +15,13 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.fiap.hodestito.roomwordsample.model.Word
 
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var wordViewModel: WordViewModel
+    val adapter : WordListAdapter by inject()
+    val wordViewModel: WordViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,11 +29,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
-        val adapter = WordListAdapter(this)
+
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
-
-        wordViewModel = ViewModelProviders.of(this).get(WordViewModel::class.java)
 
         wordViewModel.allWords.observe(this, Observer { words ->
             // Update the cached copy of the words in the adapter.
