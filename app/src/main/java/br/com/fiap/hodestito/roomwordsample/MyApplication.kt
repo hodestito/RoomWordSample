@@ -2,6 +2,7 @@ package br.com.fiap.hodestito.roomwordsample
 
 import android.app.Application
 import br.com.fiap.hodestito.roomwordsample.di.dbModule
+import br.com.fiap.hodestito.roomwordsample.di.repositoryModule
 import br.com.fiap.hodestito.roomwordsample.di.uiModule
 import br.com.fiap.hodestito.roomwordsample.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -17,6 +18,7 @@ class MyApplication : Application() {
             // declare modules
             modules(
                 listOf(
+                    repositoryModule,
                     viewModelModule,
                     uiModule,
                     dbModule
